@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\CommunityLink;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     /**
