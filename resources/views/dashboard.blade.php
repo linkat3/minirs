@@ -15,10 +15,15 @@
         </div>
     </div>
 
-    @foreach ($links as $link)
-    <li>{{$link->title}}</li>
-    @endforeach
-    {{$links->links()}}
-
+    <div class="grid grid-cols-2 gap-2">
+        <div class="bg-gray-800 text-white rounded-md">
+            @foreach ($links as $link)
+            <li>{{$link->title}}</li>
+            @endforeach
+            {{$links->links()}}
+        </div>
+        <div><x-community-add-link />
+        </div>
+    </div>
     <small>Contributed by: {{$link->creator->name}} {{$link->updated_at->diffForHumans()}}</small>
 </x-app-layout>

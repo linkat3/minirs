@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::view('/home', 'home');
+
+// routes/web.php
+//Route::view('/fecha', 'fecha');
+
+//con la función compact()
+//return view('fecha', compact('datos'));
+
 
 Route::get('/', function () {
     return view('welcome');

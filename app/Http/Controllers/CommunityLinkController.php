@@ -12,8 +12,8 @@ class CommunityLinkController extends Controller
      */
     public function index()
     {
-       $links = CommunityLink::paginate(25);
-       return view('dashboard', compact('links'));
+        $links = CommunityLink::paginate(25);
+        return view('dashboard', compact('links'));
     }
 
     /**
@@ -63,4 +63,26 @@ class CommunityLinkController extends Controller
     {
         //
     }
+
+    
+    public function mostrarFecha()
+    {
+        $fechaActual = date('Y-m-d');
+        $datos = [
+            'dia' => date('d', strtotime($fechaActual)),
+            'mes' => date('m', strtotime($fechaActual)),
+            'año' => date('Y', strtotime($fechaActual)),
+        ];
+        return view('fecha')->with('datos', $datos);
+    }
+
+    //usando with() para la vista de home
+    public function home()
+    {
+        $mensaje = 'Probando blade en laravel';
+
+        return view('home')->with(['mensaje' => $mensaje]);
+
+    }
+
 }
