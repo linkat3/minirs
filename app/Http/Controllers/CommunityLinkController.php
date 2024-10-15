@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\CommunityLink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
+use Illuminate\Http\RedirectResponse;
 class CommunityLinkController extends Controller
 {
     /**
@@ -19,17 +22,30 @@ class CommunityLinkController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         //
+        return view('post.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $data =  $request->validate([
+            'title' => 'required|max:255',
+            'link' => 'required|unique:community_links|url|max:255',
+        ]);
+
+        $link = new CommunityLink($data);
+        //Si uso CommunityLink::create($data) tengo que declara user_id y channel_id como $fillable
+        $link->user_id = Auth::id();
+        $link->channel_id = 1;
+        $link->save();
+       return back();
+        // return redirect('/posts');
     }
 
     /**
@@ -64,7 +80,7 @@ class CommunityLinkController extends Controller
         //
     }
 
-    
+
     public function mostrarFecha()
     {
         $fechaActual = date('Y-m-d');
@@ -82,7 +98,5 @@ class CommunityLinkController extends Controller
         $mensaje = 'Probando blade en laravel';
 
         return view('home')->with(['mensaje' => $mensaje]);
-
     }
-
 }

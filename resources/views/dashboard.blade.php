@@ -25,5 +25,10 @@
         <div><x-community-add-link />
         </div>
     </div>
+    
     <small>Contributed by: {{$link->creator->name}} {{$link->updated_at->diffForHumans()}}</small>
+
+    <div class="bg-gray-800 text-white rounded-md">
+        <x-community-links :links="$links" />
+    </div>
 </x-app-layout>

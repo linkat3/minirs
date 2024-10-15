@@ -30,6 +30,11 @@ Route::get('/', function () {
 Route::get('/dashboard', [CommunityLinkController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
+//rutas para los post de links y vistas
+
+Route::post('/dashboard', [CommunityLinkController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
