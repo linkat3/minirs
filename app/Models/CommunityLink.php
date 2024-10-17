@@ -15,5 +15,11 @@ class CommunityLink extends Model
     }
    
     //protected $fillable = ['user_id', 'channel_id'];
+    protected $fillable = ['title', 'link', 'channel_id'];
+
+    public function channel()
+{
+    return $this->belongsTo(Channel::class);
+}
 
 }

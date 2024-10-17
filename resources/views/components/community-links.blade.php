@@ -1,2 +1,2 @@
 @props(['links'])
-<h1>Listado de links</h1>
+<h1>Añade un Link</h1>

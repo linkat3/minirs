@@ -22,13 +22,23 @@
             @endforeach
             {{$links->links()}}
         </div>
-        <div><x-community-add-link />
+        <div>
+            <div class="bg-gray-800 text-white rounded-md">
+
+                <x-community-links :links="$links" />
+                <x-community-add-link :channels="$channels" />
+
+
+            </div>
         </div>
     </div>
-    
+
     <small>Contributed by: {{$link->creator->name}} {{$link->updated_at->diffForHumans()}}</small>
 
-    <div class="bg-gray-800 text-white rounded-md">
-        <x-community-links :links="$links" />
+    <div class="px-2 py-1"> <h3>Lista de Canales</h3>
+        <span class="inline-block px-2 py-1 text-white text-sm font-semibold rounded" style="background-color: {{ $link->channel->color }}"> {{ $link->channel->title }}
+        </span>
+        <span class="inline-block px-2 py-1 text-white text-sm font-semibold rounded" style="background-color: {{ $link->channel->color }}"> {{ $link->channel->title }}
+        </span>
     </div>
 </x-app-layout>
