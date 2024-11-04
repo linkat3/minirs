@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommunityLinkForm;
 use App\Models\Channel;
 use App\Models\CommunityLink;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\View\View;
 
 
 use Illuminate\Http\RedirectResponse;
+
 class CommunityLinkController extends Controller
 {
     /**
@@ -19,10 +21,9 @@ class CommunityLinkController extends Controller
     {
         //$links = CommunityLink::paginate(25);
         $links = CommunityLink::where('approved', 1)->paginate(25);
-        $channels = Channel::orderBy('title','asc')->get();
+        $channels = Channel::orderBy('title', 'asc')->get();
 
         return view('dashboard', compact('links', 'channels'));
-
     }
 
     /**
@@ -32,28 +33,27 @@ class CommunityLinkController extends Controller
     {
         //
         return view('post.create');
-
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CommunityLinkForm $request)
     {
 
-        $data =  $request->validate([
-            'title' => 'required|max:255',
-            'link' => 'required|unique:community_links|url|max:255',
-            'channel_id' => 'required|exists:channels,id'
-        ]);
-       
+        $data =  $request->validated();
+
         $link = new CommunityLink($data);
+
         //Si uso CommunityLink::create($data) tengo que declara user_id y channel_id como $fillable
         $link->user_id = Auth::id();
         $link->approved = Auth::user()->trusted ?? false;
         $link->save();
-        return redirect('/dashboard')->with('linkSend', 'Link añadido');
-        return back();
+        if (Auth::user()->trusted) {
+            return redirect('/dashboard')->with('linkSend', 'Link añadido');
+        } else {
+            return redirect('/dashboard')->with('warning', 'Link pendiente');
+        }
     }
 
     /**
