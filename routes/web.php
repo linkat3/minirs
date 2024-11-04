@@ -32,9 +32,11 @@ Route::get('/dashboard', [CommunityLinkController::class, 'index'])
 ->name('dashboard');
 //rutas para los post de links y vistas
 
-Route::post('/dashboard', [CommunityLinkController::class, 'index'])
+Route::post('/dashboard', [CommunityLinkController::class, 'store'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
+// return redirect('dashboard')->with('status','Profile updated!'); 
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
