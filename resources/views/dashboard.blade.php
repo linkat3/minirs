@@ -26,9 +26,7 @@
 
                     <x-community-links :links="$links" />
                     <x-community-add-link :channels="$channels" />
-                    <x-community-links :links="$links" />
-                    <x-community-add-link :channels="$channels" />
-
+                 
 
                 </div>
             </div>

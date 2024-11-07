@@ -50,11 +50,16 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact'); //el nombre de la ruta o enlace
 
-//añadiendo la ruta Analytics para que funcione los enlaces
+//añadiendo la ruta MyLinks para que funcione los enlaces
 Route::get('/mylinks', [CommunityLinkController::class, 'myLinks'])
     ->middleware(['auth', 'verified'])
     ->name('mylinks');
     
+
+//modificación barra de navegación con formulario de búsqueda
+Route::get('/search', [CommunityLinkController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('search');
 
 
 

@@ -26,6 +26,11 @@
                     </x-nav-link>
                 </div>
             </div>
+            <div class="px-6 pt-2 pb-8 mb-4  dark:border-gray-700 dark:bg-gray-800">                
+                <form action="/search" method="get">
+                    <input type="search" name="search" placeholder="Search...">
+                </form>
+            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

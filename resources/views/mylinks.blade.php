@@ -1,11 +1,13 @@
 <x-app-layout>
-<div>
-    <div class="bg-gray-800 text-white rounded-md">
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('My Links') }}
+        </h2>
+    </x-slot>
+    <div>
 
-        <x-community-links :links="$links" />
-
-
-
+        <div class="bg-gray-800 text-white rounded-md">
+            <x-community-links :links="$links" />
+        </div>
     </div>
-</div>
 </x-app-layout>

@@ -24,6 +24,7 @@ class CommunityLinkController extends Controller
         //$links = CommunityLink::paginate(25);
         $links = CommunityLink::where('approved', 1)->paginate(25);
         $channels = Channel::orderBy('title', 'asc')->get();
+        $term = request()->get('search');
 
         return view('dashboard', compact('links', 'channels'));
     }
