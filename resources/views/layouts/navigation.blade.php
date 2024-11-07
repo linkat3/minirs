@@ -15,14 +15,14 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>                    
+                    <!-- Añadiendo la opción Analytics  -->
+                    <x-nav-link :href="route('mylinks')" :active="request()->routeIs('mylinks')">
+                        {{ __('My Links') }}
                     </x-nav-link>
                     <!-- Añadiendo la nueva opción en el menú -->
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                         {{ __('Contact') }}
-                    </x-nav-link>
-                    <!-- Añadiendo la opción Analytics  -->
-                    <x-nav-link :href="route('analytics')" :active="request()->routeIs('analytics')">
-                        {{ __('Analytics') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -83,8 +83,8 @@
                 {{ __('Contact') }}
             </x-responsive-nav-link>
             <!-- Añadiendo la opción Analytics  -->
-            <x-responsive-nav-link :href="route('analytics')" :active="request()->routeIs('analytics')">
-                {{ __('Analytics') }}
+            <x-responsive-nav-link :href="route('mylinks')" :active="request()->routeIs('links')">
+                {{ __('My Links') }}
             </x-responsive-nav-link>
 
         </div>

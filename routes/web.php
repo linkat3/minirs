@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::view('/home', 'home');
 
 // routes/web.php
@@ -28,13 +29,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [CommunityLinkController::class, 'index'])
-->middleware(['auth', 'verified'])
-->name('dashboard');
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 //rutas para los post de links y vistas
 
-Route::post('/dashboard', [CommunityLinkController::class, 'index'])
-->middleware(['auth', 'verified'])
-->name('dashboard');
+Route::post('/dashboard', [CommunityLinkController::class, 'store'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+// return redirect('dashboard')->with('status','Profile updated!'); 
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,13 +48,14 @@ Route::middleware('auth')->group(function () {
 //añadiendo la ruta Contact para que funcione los enlaces
 Route::get('/contact', function () {
     return view('contact');
-    
 })->name('contact'); //el nombre de la ruta o enlace
 
 //añadiendo la ruta Analytics para que funcione los enlaces
-Route::get('/analytics', function () {
-    return view('analytics');
+Route::get('/mylinks', [CommunityLinkController::class, 'myLinks'])
+    ->middleware(['auth', 'verified'])
+    ->name('mylinks');
     
-})->name('analytics'); //el nombre de la ruta o enlace
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';
