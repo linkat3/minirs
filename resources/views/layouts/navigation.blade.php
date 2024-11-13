@@ -15,7 +15,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>                    
+                    </x-nav-link>
                     <!-- Añadiendo la opción Analytics  -->
                     <x-nav-link :href="route('mylinks')" :active="request()->routeIs('mylinks')">
                         {{ __('My Links') }}
@@ -26,9 +26,12 @@
                     </x-nav-link>
                 </div>
             </div>
-            <div class="px-6 pt-2 pb-8 mb-4  dark:border-gray-700 dark:bg-gray-800">                
+            <div class="px-6 pt-2 pb-8 mb-4  dark:border-gray-700 dark:bg-gray-800">
                 <form action="/search" method="get">
-                    <input type="search" name="search" placeholder="Search...">
+                    <input type="text" name="search" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
+                    <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                        Search
+                    </button>
                 </form>
             </div>
 
