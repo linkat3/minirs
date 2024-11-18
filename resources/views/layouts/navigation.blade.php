@@ -27,9 +27,9 @@
                 </div>
             </div>
             <div class="px-6 pt-2 pb-8 mb-4  dark:border-gray-700 dark:bg-gray-800">
-                <form action="/search" method="get">
+                <form action="{{ route('dashboard')}}" method="get">
                     <input type="text" name="search" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
-                    <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                    <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                         Search
                     </button>
                 </form>
