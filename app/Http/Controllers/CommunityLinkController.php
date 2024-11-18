@@ -21,11 +21,18 @@ class CommunityLinkController extends Controller
      */
     public function index()
     {
-        //$links = CommunityLink::paginate(25);
-        $links = CommunityLink::where('approved', 1)->paginate(25);
-        $channels = Channel::orderBy('title', 'asc')->get();
+        $links = CommunityLink::paginate(25);
         $term = request()->get('search');
+        $channels = Channel::orderBy('title', 'asc')->get();
+
+        if ($term) {
         
+        $links = CommunityLink::whereAny(['title', 'link'], 'like', "%$term%")->paginate(10);
+        
+        }  else {
+        $links = CommunityLink::where('approved', 1)->paginate(25);
+        
+        }
 
         return view('dashboard', compact('links', 'channels'));
     }
@@ -120,7 +127,7 @@ class CommunityLinkController extends Controller
     public function myLinks()
     {
         $u = Auth::user();
-        $links = $u->communityLink()->paginate(10);
+        $links = $u->CommunityLink()->paginate(10);
         return view('mylinks', compact('links'));
     }
 }
