@@ -15,7 +15,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>                    
+                    </x-nav-link>
                     <!-- Añadiendo la opción Analytics  -->
                     <x-nav-link :href="route('mylinks')" :active="request()->routeIs('mylinks')">
                         {{ __('My Links') }}
@@ -26,7 +26,6 @@
                     </x-nav-link>
                 </div>
             </div>
-
             <div class="px-6 pt-2 pb-8 mb-4  dark:border-gray-700 dark:bg-gray-800">
                 <form action="{{ route('dashboard')}}" method="get">
                     <input type="text" name="search" id="search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
@@ -34,7 +33,7 @@
                         Search
                     </button>
                 </form>
-            </div>       
+            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -42,6 +41,7 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
+                            <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="Profile Image" class="px-2">
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

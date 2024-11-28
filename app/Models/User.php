@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image',
     ];
 
     /**
@@ -49,7 +50,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(CommunityLink::class);
     }
-
     
 }
 

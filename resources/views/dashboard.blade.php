@@ -7,7 +7,6 @@
     <div class="w-1/2 p-2 text-white rounded-md">
         <x-community-links-flash-messages />
     </div>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -17,13 +16,14 @@
             </div>
             <div>
                 <div class="bg-gray-800 text-white rounded-md">
-
                     <x-community-links :links="$links" />
                     <x-community-add-link :channels="$channels" />
-
-
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
 </x-app-layout>
